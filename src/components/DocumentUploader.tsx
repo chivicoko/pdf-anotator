@@ -6,7 +6,7 @@ import { PDFDocumentProxy } from 'pdfjs-dist';
 import { Document, Page, pdfjs } from 'react-pdf';
 import { useDropzone, Accept } from 'react-dropzone';
 import AnnotationToolbar from './AnnotationToolbar';
-import { fabric } from 'fabric'; // Fabric.js for annotations and drawing
+import { fabric } from 'fabric';
 import { CommentModal } from './CommentModal';
 import { SignatureTool } from './SignatureTool';
 import { showToast } from './HotToast';
@@ -14,12 +14,10 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
 
-// Accept only PDF files
 const accept: Accept = {
   'application/pdf': ['.pdf']
 };
 
-// Specify the workerSrc to point to the locally hosted worker file
 pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 interface DocumentUploaderProps {
@@ -47,6 +45,8 @@ const DocumentUploader: React.FC<DocumentUploaderProps> = ({ onDocumentLoadSucce
     });
     setCanvas(fabricCanvas);
   };
+
+  initializeFabric()
 
   const handleDocumentLoadSuccess = (pdf: PDFDocumentProxy) => {
     setNumPages(pdf.numPages);

@@ -2,8 +2,7 @@
 
 import Modal from 'react-modal';
 import { useState } from 'react';
-
-// Modal.setAppElement('#__next');
+;
 
 interface CommentModalProps {
   isOpen: boolean,
